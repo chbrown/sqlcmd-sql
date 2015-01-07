@@ -1,0 +1,31 @@
+{
+  "name": "sqlcmd-sql",
+  "version": "0.0.1",
+  "description": "sqlcmd for SQL strings",
+  "keywords": [
+    "sqlcmd",
+    "sql",
+    "string",
+    "strings"
+  ],
+  "homepage": "https://github.com/chbrown/sqlcmd-sql",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/chbrown/sqlcmd-sql.git"
+  },
+  "bugs": {
+    "email": "Christopher Brown <io@henrian.com>",
+    "url": "http://github.com/chbrown/sqlcmd-sql/issues"
+  },
+  "license": "MIT",
+  "author": "Christopher Brown <io@henrian.com> (http://henrian.com)",
+  "dependencies": {
+    "sqlcmd": "~1.0.3"
+  },
+  "devDependencies": {
+    "mocha": "*"
+  },
+  "scripts": {
+    "test": "mocha test"
+  }
+}
