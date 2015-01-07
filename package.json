@@ -1,6 +1,6 @@
 {
   "name": "sqlcmd-sql",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "sqlcmd for SQL strings",
   "keywords": [
     "sqlcmd",
