@@ -20,7 +20,7 @@
   "license": "MIT",
   "author": "Christopher Brown <io@henrian.com> (http://henrian.com)",
   "dependencies": {
-    "sqlcmd": "~1.0.3"
+    "sqlcmd": "~1.0.6"
   },
   "devDependencies": {
     "mocha": "*"
