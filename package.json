@@ -23,11 +23,15 @@
     "sqlcmd": "^3.0.0"
   },
   "devDependencies": {
+    "@types/mocha": "^2.2.44",
     "@types/node": "latest",
+    "mocha": "^2.5.3",
     "typescript": "^2.6.1"
   },
   "scripts": {
     "prepare": "tsc -t ES6 -m commonjs -d",
+    "pretest": "tsc -p tests -t ES6 -m commonjs",
+    "test": "mocha tests/",
     "clean": "tsc -m commonjs -d --listEmittedFiles | sed 's/^TSFILE: //' | xargs rm -v"
   }
 }
