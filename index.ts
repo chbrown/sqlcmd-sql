@@ -38,6 +38,10 @@ export class Connection extends BaseConnection {
       const value = args[i];
       i++;
       return serializeSqlValue(value);
+    }).replace(/\$\d+/g, match => {
+      const name = match.slice(1);
+      const value = args[parseInt(name, 10) - 1];
+      return serializeSqlValue(value);
     });
     this.options.outputStream.write(interpolated + ';\n', 'utf-8', (err) => {
       callback(err, [interpolated]);
