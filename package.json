@@ -11,21 +11,23 @@
   "homepage": "https://github.com/chbrown/sqlcmd-sql",
   "repository": {
     "type": "git",
-    "url": "git://github.com/chbrown/sqlcmd-sql.git"
+    "url": "https://github.com/chbrown/sqlcmd-sql.git"
   },
   "bugs": {
     "email": "Christopher Brown <io@henrian.com>",
-    "url": "http://github.com/chbrown/sqlcmd-sql/issues"
+    "url": "https://github.com/chbrown/sqlcmd-sql/issues"
   },
   "license": "MIT",
   "author": "Christopher Brown <io@henrian.com> (http://henrian.com)",
   "dependencies": {
-    "sqlcmd": "~1.0.6"
+    "sqlcmd": "^3.0.0"
   },
   "devDependencies": {
-    "mocha": "*"
+    "@types/node": "latest",
+    "typescript": "^2.6.1"
   },
   "scripts": {
-    "test": "mocha test"
+    "prepare": "tsc -t ES6 -m commonjs -d",
+    "clean": "tsc -m commonjs -d --listEmittedFiles | sed 's/^TSFILE: //' | xargs rm -v"
   }
 }
