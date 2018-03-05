@@ -17,11 +17,11 @@ Or in your `package.json`:
 
 For example:
 
-    var db = new require('sqlcmd-sql').Connection();
+    var db = new require('sqlcmd-sql').Connection()
     db.Select('users').where('id = ?', 1).execute(function(err, rows) {
       // err == null
       // rows == ["SELECT users WHERE id = 1"]
-    });
+    })
 
 
 ## License
