@@ -23,9 +23,9 @@
     "typescript": "^2.6.1"
   },
   "scripts": {
-    "prepare": "tsc -t ES6 -m commonjs -d",
-    "pretest": "tsc -p tests -t ES6 -m commonjs",
+    "prepare": "tsc -d",
+    "pretest": "tsc",
     "test": "mocha tests/",
-    "clean": "tsc -m commonjs -d --listEmittedFiles | sed 's/^TSFILE: //' | xargs rm -v"
+    "clean": "tsc -d --listEmittedFiles | grep '^TSFILE: ' | sed 's/^TSFILE: //' | xargs rm -v"
   }
 }

@@ -1,5 +1,10 @@
 {
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "ES6"
+  },
   "files": [
+    "tests/index.ts",
     "index.ts"
   ]
 }
