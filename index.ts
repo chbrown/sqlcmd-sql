@@ -1,7 +1,7 @@
 import {Writable} from 'stream';
 import {Command, Connection as BaseConnection, ConnectionOptions} from 'sqlcmd';
 
-function serializeSqlValue(raw) {
+function serializeSqlValue(raw: any): string {
   if (raw === null) {
     return 'NULL';
   }
@@ -14,13 +14,16 @@ function serializeSqlValue(raw) {
   else {
     // JSON.stringify doesn't quite work for all values because it uses double quotes
     // multiline strings are fine in SQL; all we care about is escaping the quotes
-    var string = (typeof raw == 'string') ? raw : JSON.stringify(raw);
-    return "'" + string.replace(/'/g, "''") + "'";
+    const rawString = (typeof raw == 'string') ? raw : JSON.stringify(raw);
+    const escapedString = rawString.replace(/'/g, "''");
+    return `'${escapedString}'`;
   }
 }
 
 export interface StreamConnectionOptions extends ConnectionOptions {
-  /** Output / target */
+  /**
+  Output / target
+  */
   outputStream: Writable;
 }
 
@@ -43,7 +46,7 @@ export class Connection extends BaseConnection {
       const value = args[parseInt(name, 10) - 1];
       return serializeSqlValue(value);
     });
-    this.options.outputStream.write(interpolated + ';\n', 'utf-8', (err) => {
+    this.options.outputStream.write(`${interpolated};\n`, 'utf-8', (err: Error) => {
       callback(err, [interpolated]);
     });
   }
@@ -62,7 +65,7 @@ export class Connection extends BaseConnection {
       const value = command.parameters[name];
       return serializeSqlValue(value);
     });
-    this.options.outputStream.write(sql + ';\n', 'utf-8', (err) => {
+    this.options.outputStream.write(`${sql};\n`, 'utf-8', (err: Error) => {
       const result: R = [sql] as any;
       callback(err, result);
     });
