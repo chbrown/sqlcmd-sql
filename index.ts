@@ -32,7 +32,7 @@ export class Connection extends BaseConnection {
 
   executeSQL(sql: string,
              args: any[] | {[index: string]: any},
-             callback: (error: Error, rows?: any[]) => void) {
+             callback: (error: Error, rows?: any[]) => void): void {
     let i = 0;
     const interpolated = sql.replace(/\?/g, match => {
       const value = args[i];
@@ -56,7 +56,7 @@ export class Connection extends BaseConnection {
   only one row. The callback is called after writing to the outputStream ends.
   */
   executeCommand<R>(command: Command<R>,
-                    callback: (error: Error, result?: R) => void) {
+                    callback: (error: Error, result?: R) => void): void {
     const sql = command.toSQL().replace(/\$\w+/g, match => {
       const name = match.slice(1);
       const value = command.parameters[name];
